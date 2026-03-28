@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>All Flights Database</h2>
+
+<div class="search-bar">
+    <form action="{{ url_for('index') }}" method="GET">
+        <input type="text" name="search" placeholder="Search by exact or partial Flight Number..." value="{{ search }}">
+        <button type="submit" class="btn">Search</button>
+        <a href="{{ url_for('index') }}" class="btn" style="background: #6c757d;">Clear</a>
+    </form>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Flight Number</th>
+            <th>Source</th>
+            <th>Destination</th>
+            <th>Date</th>
+            <th>Departure Time</th>
+            <th>Price (₹)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for flight in flights %}
+        <tr>
+            <td>{{ flight.flight_number }}</td>
+            <td>{{ flight.source }}</td>
+            <td>{{ flight.destination }}</td>
+            <td>{{ flight.departure_date }}</td>
+            <td>{{ flight.departure_time }}</td>
+            <td>₹{{ flight.price }}</td>
+            <td>
+                <!-- Edit routes sequentially via parameters -->
+                <a href="{{ url_for('update_flight', flight_number=flight.flight_number) }}" class="btn" style="padding: 5px 10px; font-size: 14px;">Edit</a>
+                
+                <!-- Use standard form trick for safer state modification (POST) instead of generic GET links -->
+                <form action="{{ url_for('delete_flight', flight_number=flight.flight_number) }}" method="POST" style="display:inline;">
+                    <!-- Added frontend native warning alert to prevent accidental data deletion -->
+                    <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 14px;" onclick="return confirm('Are you sure you want to delete this flight?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <!-- If no flights rendered from context render fallback blank message -->
+            <td colspan="6" style="text-align: center;">No flights found in database.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

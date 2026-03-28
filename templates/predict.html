@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Machine Learning: AI Price Prediction</h2>
+<p style="margin-bottom: 20px;">Enter hypothetical flight details. Our background scikit-learn Linear Regression model will calculate the price using historical ticket data.</p>
+
+<form action="{{ url_for('predict') }}" method="POST" style="max-width: 500px;">
+    
+    <div class="form-group">
+        <label>Source Airport</label>
+        <select name="source" required>
+            <option value="" disabled selected>Select Source</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Pune">Pune</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Lucknow">Lucknow</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Surat">Surat</option>
+            <option value="Kochi">Kochi</option>
+            <option value="Goa">Goa</option>
+            <option value="Indore">Indore</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Destination Airport</label>
+        <select name="destination" required>
+            <option value="" disabled selected>Select Destination</option>
+            <option value="Delhi">Delhi</option>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Bangalore">Bangalore</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Kolkata">Kolkata</option>
+            <option value="Hyderabad">Hyderabad</option>
+            <option value="Pune">Pune</option>
+            <option value="Ahmedabad">Ahmedabad</option>
+            <option value="Jaipur">Jaipur</option>
+            <option value="Lucknow">Lucknow</option>
+            <option value="Chandigarh">Chandigarh</option>
+            <option value="Surat">Surat</option>
+            <option value="Kochi">Kochi</option>
+            <option value="Goa">Goa</option>
+            <option value="Indore">Indore</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label>Departure Date</label>
+        <input type="date" name="departure_date" required>
+    </div>
+    
+    <div class="form-group">
+        <label>Departure Time</label>
+        <input type="time" name="departure_time" required>
+    </div>
+    
+    <button type="submit" class="btn">Run Price Prediction!</button>
+
+</form>
+
+<!-- Use logic to only show the prediction card if predicting results in a valid value string -->
+{% if prediction is not none %}
+    <div class="analysis-card" style="margin-top: 30px; max-width: 500px; border: 2px solid #0056b3;">
+        <h3>Estimated Value: ₹{{ prediction }}</h3>
+        <p>Result extrapolated based on Linear Regression matrix models observing your routing and timing parameters in parity with previous inputs.</p>
+    </div>
+{% endif %}
+
+{% endblock %}

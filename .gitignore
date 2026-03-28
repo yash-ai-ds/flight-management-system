@@ -1,0 +1,21 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+venv/
+.env
+env/
+ENV/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Ignore the locally generated machine learning pipeline models
+# (It will be automatically recreated via app.py natively!)
+model/
+*.pkl

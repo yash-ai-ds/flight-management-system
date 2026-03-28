@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Data Science: Flight Analytics</h2>
+<p style="margin-bottom: 20px;">Automated insights extracted from the internal JSON registry utilizing the extensive toolkits afforded by Pandas.</p>
+
+<div style="display: flex; gap: 20px; flex-wrap: wrap;">
+    <div class="analysis-card" style="flex: 1; min-width: 250px;">
+        <h3>Active System Registrations</h3>
+        <p style="font-size: 24px; font-weight: bold;">{{ total_flights }} <span style="font-size: 14px; font-weight:normal;">Total Flights</span></p>
+    </div>
+    
+    <div class="analysis-card" style="flex: 1; min-width: 250px;">
+        <h3>Mean Monetary Cost</h3>
+        <p style="font-size: 24px; font-weight: bold;">₹{{ avg_price }} <span style="font-size: 14px; font-weight:normal;">Average Listing</span></p>
+    </div>
+    
+    <div class="analysis-card" style="flex: 1; min-width: 250px;">
+        <h3>Highest Traffic Route</h3>
+        <p style="font-size: 24px; font-weight: bold;">{{ popular_route }}</p>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+[
+    {
+        "flight_number": "FL101",
+        "source": "Delhi",
+        "destination": "Mumbai",
+        "departure_date": "2026-04-10",
+        "departure_time": "08:00",
+        "price": 5500.0
+    },
+    {
+        "flight_number": "FL102",
+        "source": "Mumbai",
+        "destination": "Bangalore",
+        "departure_date": "2026-04-11",
+        "departure_time": "14:30",
+        "price": 4200.0
+    },
+    {
+        "flight_number": "FL103",
+        "source": "Delhi",
+        "destination": "Bangalore",
+        "departure_date": "2026-04-12",
+        "departure_time": "18:00",
+        "price": 6500.0
+    },
+    {
+        "flight_number": "FL104",
+        "source": "Chennai",
+        "destination": "Delhi",
+        "departure_date": "2026-04-13",
+        "departure_time": "09:00",
+        "price": 5800.0
+    },
+    {
+        "flight_number": "FL105",
+        "source": "Kolkata",
+        "destination": "Mumbai",
+        "departure_date": "2026-04-14",
+        "departure_time": "16:00",
+        "price": 6100.0
+    },
+    {
+        "flight_number": "FL106",
+        "source": "Goa",
+        "destination": "Delhi",
+        "departure_date": "2026-04-12",
+        "departure_time": "20:00",
+        "price": 3500.0
+    }
+]

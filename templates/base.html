@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Management System</title>
+    <!-- Importing external Custom CSS file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div id="branding">
+            <h1>Flight Management System</h1>
+        </div>
+        <nav>
+            <ul>
+                <!-- Generating URLs dynamically through Flask's url_for -->
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_flight') }}">Add Flight</a></li>
+                <li><a href="{{ url_for('predict') }}">AI Price Predict</a></li>
+                <li><a href="{{ url_for('analysis') }}">Data Analysis</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Display alert/notification messages from Flask backend -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        <!-- Jinja standard template inheritance to inject sub-views -->
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
